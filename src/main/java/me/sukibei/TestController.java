@@ -1,7 +1,7 @@
 package me.sukibei;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class TestController {
@@ -15,4 +15,15 @@ public class TestController {
         public String test() {
             return "Hello World";
         }
+
+        @PostMapping("/test")
+        public String posttest(){return "Hello post";}
+
+
+        @PutMapping("/test")
+        public String puttest(){return "Hello put";}
+
+        @DeleteMapping ("/test")
+        public String deleteTest(){return "Hello delete";}
+
 }
