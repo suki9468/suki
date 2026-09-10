@@ -26,4 +26,9 @@ public class TestController {
         @DeleteMapping ("/test")
         public String deleteTest(){return "Hello delete";}
 
+        @GetMapping("/member")
+        public String getAllMembers(){
+        return "Hello member";
+        }
+
 }
