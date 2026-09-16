@@ -11,24 +11,25 @@ public class TestController {
     }
 
 
-        @GetMapping("/test")
-        public String test() {
-            return "Hello World";
-        }
+    @GetMapping("/test")
+    public String test() {
+        return "Hello World";
+    }
 
-        @PostMapping("/test")
-        public String posttest(){return "Hello post";}
+    @PostMapping("/test")
+    public String posttest() {
+        return "Hello post";
+    }
 
 
-        @PutMapping("/test")
-        public String puttest(){return "Hello put";}
+    @PutMapping("/test")
+    public String puttest() {
+        return "Hello put";
+    }
 
-        @DeleteMapping ("/test")
-        public String deleteTest(){return "Hello delete";}
-
-        @GetMapping("/member")
-        public String getAllMembers(){
-        return "Hello member";
-        }
+    @DeleteMapping("/test")
+    public String deleteTest() {
+        return "Hello delete";
+    }
 
 }
