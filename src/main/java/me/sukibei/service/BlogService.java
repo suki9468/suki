@@ -8,6 +8,8 @@ import me.sukibei.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class BlogService {
@@ -16,5 +18,9 @@ public class BlogService {
 
     public Article save(AddArticleRequest dto){
         return blogRepository.save(dto. toEntity());
+    }
+
+    public List<Article> getAll(){
+        return blogRepository.findAll();
     }
 }
