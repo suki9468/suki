@@ -8,10 +8,7 @@ import me.sukibei.dto.ArticleResponse;
 import me.sukibei.service.BlogService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +20,9 @@ public class BlogApiController {
     private final BlogService blogService;
 
     @PostMapping("/api/articles")
-    public ResponseEntity<Article> addArticle(@RequestBody AddArticleRequest request){
+    public ResponseEntity<ArticleResponse> addArticle(@RequestBody AddArticleRequest request){
         Article savedArticle = blogService.save(request);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedArticle);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ArticleResponse(savedArticle));
 
     }
 
@@ -50,4 +47,10 @@ public class BlogApiController {
    // public BlogApiController(BlogService blogService){
      //   this.blogService = service;
     //}
+
+    @GetMapping("/api/articles/{id}")
+    public ResponseEntity<ArticleResponse> getArticle(@PathVariable Long id){
+        return ResponseEntity.ok()
+                .body(new ArticleResponse(blogService.findById(id)));
+    }
 }
