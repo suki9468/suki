@@ -4,6 +4,7 @@ package me.sukibei.service;
 import lombok.RequiredArgsConstructor;
 import me.sukibei.domain.Article;
 import me.sukibei.dto.AddArticleRequest;
+import me.sukibei.dto.UpdateArticleRequest;
 import me.sukibei.repository.BlogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,11 @@ public class BlogService {
     }
     public void deleteArticle(Long id){
         blogRepository.deleteById(id);
+    }
+    public Article updateArticle(long id, UpdateArticleRequest req){
+        Article article = new Article(req.getTitle(), req.getContent());
+        article.setId(id);
+        blogRepository.save(article);
+        return article;
     }
 }

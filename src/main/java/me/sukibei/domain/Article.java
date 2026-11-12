@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Setter
 @Entity
 @Getter
 @NoArgsConstructor
@@ -21,9 +23,14 @@ public class Article {
 
 
         @Builder
-        public Article(String tiltle, String content){
+        public Article(String title, String content){
             this.title = title;
             this.content = content;
         }
+        public void update(String title,String content){
+            this.title = title;
+            this.content = content;
+        }
+
     }
 
