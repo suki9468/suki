@@ -1,6 +1,7 @@
 package me.sukibei.service;
 
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import me.sukibei.domain.Article;
 import me.sukibei.dto.AddArticleRequest;
@@ -38,4 +39,12 @@ public class BlogService {
         blogRepository.save(article);
         return article;
     }
+    @Transactional
+    public Article updateArticle(Long id, UpdateArticleRequest req){
+        Article article = blogRepository.findById(id)
+                .orElseThrow(()->new IllegalArgumentException(""));
+        article.update(req.getTitle(), req.getContent());
+        return article;
+    }
+
 }
